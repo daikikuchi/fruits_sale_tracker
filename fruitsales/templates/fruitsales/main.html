@@ -1,0 +1,21 @@
+{% extends 'fruitsales/base.html' %} {% block content %}
+<div class="container">
+    <div class='jumbotron'>
+        <div class="centered-container">
+            <div>
+                <h2>管理TOP</h2>
+            </div>
+        </div>
+        <div class="centered-container">
+            <ul>
+                <li><a href="{% url 'fruit_admin_list' %}">果物マスター管理</a></li>
+                <li><a href="{% url 'fruitsales_admin_list' %}">販売情報管理</a></li>
+                <li><a href="{% url 'fruitsales_admin_stats' %}">販売統計情報</a></li>
+                <li>
+                    <a href="{% url 'logout' %}">ログアウト</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{%endblock%}

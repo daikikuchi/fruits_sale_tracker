@@ -1,0 +1,13 @@
+{% extends 'fruitsales/base.html' %} {% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <div class='text-container'>
+            <h2>果物販売登録</h2>
+            <form method="POST">
+                {% csrf_token %} {{form.as_p}}
+                <button type="submit" class="bth btn-lg btn-primary">登録</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

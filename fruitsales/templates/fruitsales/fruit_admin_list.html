@@ -1,0 +1,32 @@
+{% extends 'fruitsales/base.html' %} {% block content %}
+<p class="info-text"><a href="{% url 'main' %}">Top</a>>管理TOP><a href="{% url 'fruit_new' %}">新規作成
+ </a></p>
+<div class="table-container">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th>単価</th>
+            <th>登録日時</th>
+            <th></th>
+        </tr>
+        {% for fruit in fruits %}
+        <tr>
+            <td>{{fruit.id}}</td>
+            <td>{{fruit.name}}</td>
+            <td>{{fruit.price}}</td>
+            <td>{{fruit.created_date|date:"Y-m-d"}}</td>
+            <td>
+                <div class="centered-button-container">
+                    <button><a href="{% url 'fruit_edit' pk=fruit.id %}">編集</a></button>
+                    <form action="{% url 'fruit_delete' pk=fruit.id %}" method="post" class='form-size'>
+                        {% csrf_token %}
+                        <input type="submit" value="削除" />
+                    </form>
+                    </td>
+            </div>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{%endblock%}

@@ -1,0 +1,27 @@
+<!DOCTYPE html> {% load staticfiles %}
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Python Project</title>
+  {# Custom CSS#}
+  <link rel="stylesheet" href="{% static 'css/fruit.css' %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" ; integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <div class='header'>
+    <h1>果物販売管理</h1>
+  </div>
+  <div class="content container">
+    <div class="row">
+      <div class="col-md-12">
+
+        {% if user.is_authenticated %}
+        <h3>ログイン中</h3> {% else %}
+
+        <h3>ログインしてください。</h3> {% endif %} {% block content %} {% endblock %}
+        <br />
+      </div>
+    </div>
+    </body>
+
+</html>

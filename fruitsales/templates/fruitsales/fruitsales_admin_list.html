@@ -1,0 +1,46 @@
+{% extends 'fruitsales/base.html' %} {% block content %}
+<p class="info-text"><a href="{% url 'main' %}">Top</a>>販売情報管理><a href="{% url 'fruitsales_new' %}">販売情報登録
+ </a></p>
+<div class="table-container">
+  <table>
+    <tr>
+      <th>果物</th>
+      <th>個数</th>
+      <th>売上</th>
+      <th>販売日時</th>
+      <th></th>
+    </tr>
+    {% for sale in fruits_sales %}
+    <tr>
+      <td>{{sale.fruitinfo.name}}</td>
+      <td>{{sale.number}}</td>
+      <td>{{sale.total_price}}</td>
+      <td>{{sale.sold_date|date:"Y-m-d H:i"}}</td>
+      <td>
+        <div class="centered-button-container">
+          <button><a href="{% url 'fruitsales_edit' pk=sale.id %}">編集</a></button>
+          <form action="{% url 'fruitsales_delete' pk=sale.id %}" method="post" class='form-size'>
+            {% csrf_token %}
+            <input type="submit" value="削除" />
+          </form>
+      </td>
+      </div>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+<div class="csv-container">
+  <form action="{% url 'upload_csv' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2>CSV一括登録</h2>
+    <label>
+        <input type="file" name="csv" accept=".csv">
+    </label>
+    <input type="submit" class="btn btn-primary" , value="CSVアップロード" 　/>
+  </form>
+</div>
+
+<div>
+</div>
+{%endblock%}

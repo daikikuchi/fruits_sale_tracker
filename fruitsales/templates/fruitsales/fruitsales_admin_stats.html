@@ -1,0 +1,66 @@
+{% extends 'fruitsales/base.html' %} {% block content %}
+<p class="info-text"><a href="{% url 'main' %}">Top</a>>販売情報管理
+  <div class="table-container">
+    <div>
+      <h1>累計</h1>
+      <h1>
+            {% if sales_total.total_price__sum %}
+            {{ sales_total.total_price__sum }}円
+            {% else %}
+            0円
+            {% endif %}
+        </h1>
+    </div>
+
+    <h2>月別</h2>
+
+    <table>
+      <tr>
+        <th>月</th>
+        <th>売上</th>
+        <th>内訳</th>
+      </tr>
+      {% for month, values in month_group.items %}
+      <tr>
+        <td>{{ month }}</td>
+        <td>{% with values|last as last %} {{ last }} 
+        {% endwith %}</td>
+        <td>
+        {% for sale in values %} 
+          {% if sale.0 %}
+            {{ sale.0 }}: {{ sale.1 }}円({{sale.2}})
+          {% endif %}
+        {% endfor %}
+        </td>
+
+      </tr>
+      {% endfor %}
+    </table>
+
+    <h2>日別</h2>
+
+    <table>
+      <tr>
+        <th>月</th>
+        <th>売上</th>
+        <th>内訳</th>
+      </tr>
+      {% for day, values in day_group.items %}
+      <tr>
+        <td>{{ day }}</td>
+        <td>{% with values|last as last %} {{ last }} 
+        {% endwith %}</td>
+        <td> 
+          {% for sale in values %} 
+          {% if sale.0 %} 
+            {{ sale.0 }}: {{ sale.1 }}円({{sale.2}})
+            {% endif %} 
+        {% endfor %}
+        </td>
+
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+  {%endblock%}

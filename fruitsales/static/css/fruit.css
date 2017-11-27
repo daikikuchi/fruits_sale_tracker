@@ -1,0 +1,99 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+  color: #5F5F5F;
+}
+
+table {
+  width: 80%;
+  height: 150px;
+  table-layout: fixed;
+  margin: 30px, 50px;
+}
+
+ul li {
+  margin: 25px;
+  font-size: 25px;
+}
+
+table, th, td {
+  border: 1px solid black;
+  margin-left: 20px;
+}
+
+th, td {
+  padding-left: 8px !important;
+  /*override bootstrap */
+  margin: 5px!important;
+  /*override bootstrap */
+  font-size: 20px;
+}
+
+td, a {
+  margin: 5px;
+}
+
+th {
+  background: #DFDFDF;
+}
+
+label {
+  text-align: left;
+}
+
+h3 {
+  text-align: center;
+}
+
+.table-container {
+  width: 100%;
+  margin: 30px 50px;
+}
+
+.header {
+  width: 100%;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFFACD;
+}
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-container {
+  margin-left: 400px;
+  width: 300px;
+}
+
+.errorlist {
+  color: red;
+}
+
+.info-text {
+  font-size: 35px;
+  margin-left: 40px;
+}
+
+.centered-button-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.form-size {
+  padding: 15px;
+}
+
+.csv-container {
+  margin-left: 40px;
+}
