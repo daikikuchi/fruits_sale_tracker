@@ -109,8 +109,6 @@ def sale_stats(request):
                 len(three_months) - 1]['month']).order_by(
                     '-sold_date', 'fruitinfo__id')
 
-        grand_total_monthly = get_total_price(three_months_rows, "month")
-
         monthly_details = get_details(three_months_rows, "month")
 
         month_group = OrderedDict(
