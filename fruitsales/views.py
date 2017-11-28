@@ -114,8 +114,7 @@ def sale_stats(request):
         month_group = OrderedDict(
             sorted(monthly_details.items(), reverse=True))
 
-        print month_group
-        # #　日別金額の計算
+        #日別金額の計算
         trunc_day = FruitSalesInfo.objects.annotate(day=TruncDate('sold_date'))
 
         three_days = trunc_day.values('day').order_by('-day').distinct()[:3]
@@ -172,16 +171,13 @@ def get_details(data, mode):
                 result[period].append((fruit, i.total_price, i.number))
         else:
             result[period] = [(fruit, i.total_price, i.number)]
-    # appending grand total at the end
+    # 月別、日別売り上げを辞書にappend　
     for j in result:
         result[j].append((total_price_result.get(j)))
-    print result
     return result
 
 
 # CSV
-
-
 def upload_csv(request):
     failures = []
     if request.POST and request.FILES:
